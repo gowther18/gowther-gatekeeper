@@ -1,1 +1,1 @@
-{"$schema":"https://openapi.vercel.sh/vercel.json","functions":{"api/agent.js":{"includeFiles":"circuits/**","maxDuration":10}},"rewrites":[{"destination":"/api/agent","source":"/agent"}]}
+{"$schema":"https://openapi.vercel.sh/vercel.json","functions":{"api/agent.js":{"includeFiles":["circuits/**","node_modules/js-sha3/**","node_modules/snarkjs/**","node_modules/ffjavascript/**"],"maxDuration":10}},"rewrites":[{"destination":"/api/agent","source":"/agent"}]}
