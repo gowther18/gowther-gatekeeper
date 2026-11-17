@@ -1,15 +1,1 @@
-{
-  "name": "agentgames",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "snarkjs": "^0.7.6"
-  }
-}
+{"author":"","dependencies":{"js-sha3":"^0.9.3","snarkjs":"^0.7.6"},"description":"gowther.ai — zkVerify Agent Games Proof Gatekeeper live responder. Verifies HMAC-signed tasks, decides APPROVE/REJECT deterministically, generates a Groth16 proof with snarkjs.","engines":{"node":">=18"},"keywords":[],"license":"ISC","main":"server.js","name":"gowther-gatekeeper","scripts":{"demo":"node run-demo.mjs","start":"node server.js","test":"node test/test-server.mjs"},"type":"module","version":"1.1.0"}

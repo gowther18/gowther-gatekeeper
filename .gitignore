@@ -1,1 +1,9 @@
 node_modules/
+.env
+.vercel
+data/
+input-*.json
+proof-demo-*.json
+public-demo-*.json
+seen.json
+*.log

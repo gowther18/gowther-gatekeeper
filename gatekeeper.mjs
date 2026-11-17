@@ -46,8 +46,17 @@ export function decide(task, seenProofRefs = new Set()) {
 // salt: private per-task blinding value; it never appears in the public signals
 // but changes public signal [0] (the binding commitment), so a proof cannot be
 // replayed for another task.
+// NOTE (live server): taskId/salt may be passed as decimal strings or BigInts
+// (e.g. keccak256(task_id) mod p, or a 128-bit random salt) — values that do
+// not fit in a JS Number. They are kept as strings; snarkjs accepts string
+// field elements (decimal or 0x-hex). Small numbers still work as before.
 export function buildCircuitInput(task, decision, salt, taskId) {
   const input = task.input ?? task;
+  const taskIdStr =
+    typeof taskId === "bigint"
+      ? taskId.toString()
+      : String(taskId ?? input.task_id ?? 0);
+  const saltStr = typeof salt === "string" ? salt : String(salt);
   return {
     decision,
     registeredVkHash: modP(input.registered_vk ?? input.registeredVkHash).toString(),
@@ -60,8 +69,8 @@ export function buildCircuitInput(task, decision, salt, taskId) {
     conditionRecipient: modP(input.condition_recipient ?? input.conditionRecipient).toString(),
     amount: Number(input.amount),
     maxTransfer: Number(input.max_transfer ?? input.maxTransfer),
-    taskId: Number(taskId ?? input.task_id ?? 0),
-    salt: Number(salt),
+    taskId: taskIdStr,
+    salt: saltStr,
   };
 }
 
